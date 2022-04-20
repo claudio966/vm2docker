@@ -1,6 +1,4 @@
 # vm2docker
-An effective way to convert a virtual machine to docker container
-
 # Conversão de uma aplicação em máquina virtual para um contêiner em Docker
 
 1. O processo inicia-se com a atualização do sistema operacional e a instalação dos pacotes necessários para utilização do qemu. Segue:
