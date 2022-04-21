@@ -17,7 +17,7 @@ foo@bar:~$ sudo modprobe nbd
 foo@bar:~$ sudo ls /dev/nbd*
 ```
 
-This output is expected:
+- This output is expected:
 ```shell-session
 foo@bar:~$ sudo ls /dev/nbd*
 /dev/nbd0    /dev/nbd1   /dev/nbd13  /dev/nbd3  /dev/nbd7
@@ -47,12 +47,12 @@ foo@bar:~$ sudo tar -C /mnt -czf image.tar.gz .
 foo@bar:~$ sudo docker import image.tar.gz image:1.0
 
 ```
-If everything went as expected, you can build the container to test from the previous image:
+- If everything went as expected, you can build the container to test from the previous image:
 
 ```console
 foo@bar:~$ sudo docker run --rm -it --name image image:1.0 /bin/bash
 ```
-:computer: And with this result. The shell of your application !
+- And with this result. The shell of your application !
 ```console
 root@9d78ff335b6f:/# 
 ```
