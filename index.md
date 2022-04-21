@@ -18,7 +18,7 @@ foo@bar:~$ sudo ls /dev/nbd*
 ```
 
 - This output is expected:
-```shell-session
+```console
 foo@bar:~$ sudo ls /dev/nbd*
 /dev/nbd0    /dev/nbd1   /dev/nbd13  /dev/nbd3  /dev/nbd7
 /dev/nbd0p1  /dev/nbd10  /dev/nbd14  /dev/nbd4  /dev/nbd8
