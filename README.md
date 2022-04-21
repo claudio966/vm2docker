@@ -1,25 +1,22 @@
 # vm2docker
-# Conversão de uma aplicação em máquina virtual para um contêiner em Docker
+# Conversion of Virtual Machine application for a Docker Conteiner
 
-1. O processo inicia-se com a atualização do sistema operacional e a instalação dos pacotes necessários para utilização do qemu. Segue:
-
+1. The process initialize with the update of your operational system and, after that, the installation of the necessary packages for utilization of qemu program. Following.
 ```console 
 sudo update && apt install qemu-utils
 ```
 
-2. Uma vez instalados os pacotes é necessário habilitar o módulo do protocolo nbd. Segue:
-
+2. Once installed, it's necessary to enable the nbd protocol modules:
 ```console
 sudo modprobe nbd
 ```
 
-3. Pode-se verificar que os módulos foram habilitados com o comando abaixo. Segue:
-
+3. You can verify that modules was enabled with below command:
 ```console
 sudo ls /dev/nbd*
 ```
 
-:computer: Espera-se uma saída desta forma:
+:computer: This output is expected:
 ```shell-session
 sudo ls /dev/nbd*
 /dev/nbd0    /dev/nbd1   /dev/nbd13  /dev/nbd3  /dev/nbd7
@@ -28,31 +25,35 @@ sudo ls /dev/nbd*
 /dev/nbd0p3  /dev/nbd12  /dev/nbd2   /dev/nbd6
 ```
 
-4. Após isso, é necessário conectar a imagem em .vmdk em um dispositivo virtual nbd. Segue:
+4. After that, it's necessary connect the .vmdk image in a nbd virutal device:
 ```console
 sudo qemu-nbd -c /dev/nbd0 -r image.vmdk
 ```
 
-5. Uma vez mapeado é necessário montar a partição raiz deste dispositivo(nbd0). Neste caso, a mesma é identificada como nbd0p5 e será montada no diretório /mnt.
+5. Once mapped, it's necessary to mount the root partition of this device(ndb0). In this case, oneself is identified as nbd0p5 and will be mounted at /mnt directory.
+ 
 ```console
 sudo mount -o -ro,noload /dev/nbd0p5 /mnt
 ```
-6. Uma vez montado no diretório /mnt é necessário empacotar e comprimir este diretório. Para tanto pode-se utilizar a ferramenta tar. Segue:
+6. Once mounted at /mnt directory it's necessary pack and compress this directory in a tar.gz file. For that, you can use the tar program.
 
 ```console
 sudo tar -C /mnt -czf image.tar.gz .
 ```
-7. Em posse do arquivo. tar.gz é necessário importá-lo para docker a fim de transformá-lo em uma imagem, ou seja, o molde para o contêiner. Segue:
+7. In possess of this file, is necessary import to docker with propose to turn it in an image. That is the shape for the future container.
 
 ```console
 sudo docker import image.tar.gz image:1.0
+
 ```
-Se tudo ocorreu como esperado pode-se criar um contêiner de teste a partir da imagem. Segue:
+If everything went as expected, you can build the container to test from the previous image:
 
 ```console
 sudo docker run --rm -it --name image image:1.0 /bin/bash
 ```
-:computer: E tendo como resultado o shell do contêiner:
+:computer: And with this result. The shell of your application !
 ```console
 root@9d78ff335b6f:/# 
 ```
+# Troubleshootings:
+- This method don't work in partition that use LVM implementation. For this approach is necessary another steps.
