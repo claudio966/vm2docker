@@ -1,5 +1,5 @@
 # vm2docker
-# Conversion of Virtual Machine application for a Docker Conteiner
+# Conversion of Virtual Machine Application for a Docker Conteiner
 
 1. The process initialize with the update of your operational system and, after that, the installation of the necessary packages for utilization of qemu program. Following.
 ```console 
