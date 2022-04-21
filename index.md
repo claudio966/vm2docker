@@ -17,7 +17,7 @@ foo@bar:~$ sudo modprobe nbd
 foo@bar:~$ sudo ls /dev/nbd*
 ```
 
-:computer: This output is expected:
+This output is expected:
 ```shell-session
 foo@bar:~$ sudo ls /dev/nbd*
 /dev/nbd0    /dev/nbd1   /dev/nbd13  /dev/nbd3  /dev/nbd7
