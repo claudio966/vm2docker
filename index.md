@@ -32,26 +32,23 @@ foo@bar:~$ sudo qemu-nbd -c /dev/nbd0 -r image.vmdk
 ```
 
 5. Once mapped, it's necessary to mount the root partition of this device(ndb0). In this case, oneself is identified as nbd0p5 and will be mounted at /mnt directory.
- 
 ```console
 foo@bar:~$ sudo mount -o -ro,noload /dev/nbd0p5 /mnt
 ```
 6. Once mounted at /mnt directory it's necessary pack and compress this directory in a tar.gz file. For that, you can use the tar program.
-
 ```console
 foo@bar:~$ sudo tar -C /mnt -czf image.tar.gz .
 ```
 7. In possess of this file, is necessary import to docker with propose to turn it in an image. That is the shape for the future container.
-
 ```console
 foo@bar:~$ sudo docker import image.tar.gz image:1.0
 
 ```
 - If everything went as expected, you can build the container to test from the previous image:
-
 ```console
 foo@bar:~$ sudo docker run --rm -it --name image image:1.0 /bin/bash
 ```
+
 - And with this result. The shell of your application !
 ```console
 root@9d78ff335b6f:/# 
