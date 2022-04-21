@@ -42,7 +42,6 @@ foo@bar:~$ sudo tar -C /mnt -czf image.tar.gz .
 7. In possess of this file, is necessary import to docker with propose to turn it in an image. That is the shape for the future container.
 ```console
 foo@bar:~$ sudo docker import image.tar.gz image:1.0
-
 ```
 - If everything went as expected, you can build the container to test from the previous image:
 ```console
