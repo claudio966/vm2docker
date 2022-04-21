@@ -1,4 +1,3 @@
-```markdown
 # vm2docker
 # Conversion of Virtual Machine Application for a Docker Conteiner
 
@@ -66,5 +65,4 @@ foo@bar:~$ sudo qemu-img convert -f vmdk image.vmdk -O raw image.raw
 2. In possess the raw image, you can change a bit the fourth step. With this approach:
 ```console
 foo@bar:~$ sudo qemu-nbd -c /dev/ndb0 -r image.raw
-```
 ```
