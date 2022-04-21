@@ -56,13 +56,3 @@ foo@bar:~$ sudo docker run --rm -it --name image image:1.0 /bin/bash
 ```console
 root@9d78ff335b6f:/# 
 ```
-## Convert a VM that Use Partion with LVM Implementation
-1. For partiton created with LVM, it's necessary an intermediate procedure between third and the fourth previous steps, that is, convert the vmdk format image to raw format image. For this, it's used the utilitarian qemu-img:
-```console
-foo@bar:~$ sudo qemu-img convert -f vmdk image.vmdk -O raw image.raw
-```
-
-2. In possess the raw image, you can change a bit the fourth step. With this approach:
-```console
-foo@bar:~$ sudo qemu-nbd -c /dev/ndb0 -r image.raw
-```
