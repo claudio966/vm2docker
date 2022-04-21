@@ -47,7 +47,6 @@ foo@bar:~$ sudo docker import image.tar.gz image:1.0
 ```console
 foo@bar:~$ sudo docker run --rm -it --name image image:1.0 /bin/bash
 ```
-
 - And with this result. The shell of your application !
 ```console
 root@9d78ff335b6f:/# 
