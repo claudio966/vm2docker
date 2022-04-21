@@ -3,22 +3,22 @@
 
 1. The process initialize with the update of your operational system and, after that, the installation of the necessary packages for utilization of qemu program. Following.
 ```console 
-foo@bar:~ sudo update && apt install qemu-utils
+foo@bar:~$ sudo update && apt install qemu-utils
 ```
 
 2. Once installed, it's necessary to enable the nbd protocol modules:
 ```console
-foo@bar:~ sudo modprobe nbd
+foo@bar:~$ sudo modprobe nbd
 ```
 
 3. You can verify that modules was enabled with below command:
 ```console
-foo@bar:~ sudo ls /dev/nbd*
+foo@bar:~$ sudo ls /dev/nbd*
 ```
 
 :computer: This output is expected:
 ```shell-session
-foo@bar:~ sudo ls /dev/nbd*
+foo@bar:~$ sudo ls /dev/nbd*
 /dev/nbd0    /dev/nbd1   /dev/nbd13  /dev/nbd3  /dev/nbd7
 /dev/nbd0p1  /dev/nbd10  /dev/nbd14  /dev/nbd4  /dev/nbd8
 /dev/nbd0p2  /dev/nbd11  /dev/nbd15  /dev/nbd5  /dev/nbd9
@@ -27,29 +27,29 @@ foo@bar:~ sudo ls /dev/nbd*
 
 4. After that, it's necessary connect the .vmdk image in a nbd virutal device:
 ```console
-foo@bar:~ sudo qemu-nbd -c /dev/nbd0 -r image.vmdk
+foo@bar:~$ sudo qemu-nbd -c /dev/nbd0 -r image.vmdk
 ```
 
 5. Once mapped, it's necessary to mount the root partition of this device(ndb0). In this case, oneself is identified as nbd0p5 and will be mounted at /mnt directory.
  
 ```console
-foo@bar:~ sudo mount -o -ro,noload /dev/nbd0p5 /mnt
+foo@bar:~$ sudo mount -o -ro,noload /dev/nbd0p5 /mnt
 ```
 6. Once mounted at /mnt directory it's necessary pack and compress this directory in a tar.gz file. For that, you can use the tar program.
 
 ```console
-foo@bar:~ sudo tar -C /mnt -czf image.tar.gz .
+foo@bar:~$ sudo tar -C /mnt -czf image.tar.gz .
 ```
 7. In possess of this file, is necessary import to docker with propose to turn it in an image. That is the shape for the future container.
 
 ```console
-foo@bar:~ sudo docker import image.tar.gz image:1.0
+foo@bar:~$ sudo docker import image.tar.gz image:1.0
 
 ```
 If everything went as expected, you can build the container to test from the previous image:
 
 ```console
-foo@bar:~ sudo docker run --rm -it --name image image:1.0 /bin/bash
+foo@bar:~$ sudo docker run --rm -it --name image image:1.0 /bin/bash
 ```
 :computer: And with this result. The shell of your application !
 ```console
