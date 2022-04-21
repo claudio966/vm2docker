@@ -1,6 +1,7 @@
 # vm2docker
 # Conversion of Virtual Machine Application for a Docker Conteiner
 
+## The standart Procedure
 1. The process initialize with the update of your operational system and, after that, the installation of the necessary packages for utilization of qemu program. Following.
 ```console 
 foo@bar:~$ sudo update && apt install qemu-utils
@@ -55,5 +56,8 @@ foo@bar:~$ sudo docker run --rm -it --name image image:1.0 /bin/bash
 ```console
 root@9d78ff335b6f:/# 
 ```
-# Troubleshootings:
-- This method doesn't work in partition that use LVM implementation. For this approach is necessary another steps.
+## Convert a VM that Use Partion with LVM Implementation
+1. For partiton created with LVM, it's necessary an intermediate procedure between third and the fourth previous steps, that is, convert the vmdk format image to raw format image. For this, it's used the utilitarian qemu-img:
+```console
+foo@bar:~$ sudo qemu-img convert -f vmdk image.vmdk -O raw image.raw
+```
