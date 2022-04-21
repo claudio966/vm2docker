@@ -56,4 +56,4 @@ foo@bar:~ sudo docker run --rm -it --name image image:1.0 /bin/bash
 root@9d78ff335b6f:/# 
 ```
 # Troubleshootings:
-- This method don't work in partition that use LVM implementation. For this approach is necessary another steps.
+- This method doesn't work in partition that use LVM implementation. For this approach is necessary another steps.
