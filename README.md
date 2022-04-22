@@ -4,7 +4,7 @@
 ## The standart Procedure
 1. The process initialize with the update of your operational system and, after that, the installation of the necessary packages for utilization of qemu program. Following.
 ```console 
-foo@bar:~$ sudo update && apt install qemu-utils
+foo@bar:~$ sudo update && sudo apt install qemu-utils
 ```
 
 2. Once installed, it's necessary to enable the nbd protocol modules:
@@ -26,7 +26,7 @@ foo@bar:~$ sudo ls /dev/nbd*
 /dev/nbd0p3  /dev/nbd12  /dev/nbd2   /dev/nbd6
 ```
 
-4. After that, it's necessary connect the .vmdk image in a nbd virutal device:
+4. After that, it's necessary connect the .vmdk image in a nbd virtual device:
 ```console
 foo@bar:~$ sudo qemu-nbd -c /dev/nbd0 -r image.vmdk
 ```
