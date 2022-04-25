@@ -52,4 +52,4 @@ foo@bar:~$ sudo docker run --rm -it --name image image:1.0 /bin/bash
 root@9d78ff335b6f:/# 
 ```
 
-## Convert a VM that Use Partion with LVM Implementation
+## Convert a VM that Use Partition with LVM Implementation
