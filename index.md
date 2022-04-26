@@ -53,3 +53,26 @@ root@9d78ff335b6f:/#
 ```
 
 ## Convert a VM that Use Partition with LVM Implementation
+1. Now assume that you have this configuration for device /dev/nbd0:
+```console
+foo@bar:~$ sudo fdisk -l /dev/nbd0
+Device Boot Start     End   Sectors Size Id Type
+/dev/nbd1p1 *             2048    499711    497664    243M 83 Linux
+/dev/nbd1p2             501758 251656191 251154434  119,8G  5 Estendida
+/dev/nbd1p5             501760 251656191 251154432  119,8G 8e Linux LVM
+```
+It's clearly there are a different type of partitions, that is, LVM partitions.
+
+2. For this partitions that use LVM implementation, it's necessary additional step to seek the right device for mount. In this case, it's used the `lvs` command. This, command seek all logical device of LVM partition in your machine, as the below example:
+```console
+foo@bar:~$ sudo lvs 
+  LV     VG        Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  home   csic04-vg -wi-a-----   9,31g                                                    
+  root   csic04-vg -wi-a-----   9,31g                                                    
+  swap_1 csic04-vg -wi-a-----  <2,00g                                                    
+  tmp    csic04-vg -wi-a-----  <1,37g                                                    
+  var    csic04-vg -wi-a----- <97,77g  
+```
+In this case, the lvs command find out 5 logical partitions
+
+If is necessary to mount the root partition
