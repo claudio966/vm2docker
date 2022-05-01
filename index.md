@@ -30,7 +30,6 @@ foo@bar:~$ sudo ls /dev/nbd*
 ```console
 foo@bar:~$ sudo qemu-nbd -c /dev/nbd0 -r image.vmdk
 ```
-
 5. Once mapped, it's necessary to mount the root partition of this device(ndb0). In this case, oneself is identified as nbd0p5 and will be mounted at /mnt directory.
 ```console
 foo@bar:~$ sudo mount -ro,noload /dev/nbd0p5 /mnt
@@ -75,4 +74,12 @@ foo@bar:~$ sudo lvs
 ```
 In this case, the lvs command find out 5 logical partitions
 
-If is necessary to mount the root partition
+3. If is necessary to mount the root partition. For this, you can do with two ways:
+```console
+foo@bar:~$ sudo mount -ro /dev/csic04-vg/root
+```
+or
+
+```console
+foo@bar:~$ sudo mount -ro /dev/mapper/csic-vg--root
+```
