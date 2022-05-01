@@ -33,7 +33,7 @@ foo@bar:~$ sudo qemu-nbd -c /dev/nbd0 -r image.vmdk
 
 5. Once mapped, it's necessary to mount the root partition of this device(ndb0). In this case, oneself is identified as nbd0p5 and will be mounted at /mnt directory.
 ```console
-foo@bar:~$ sudo mount -o -ro,noload /dev/nbd0p5 /mnt
+foo@bar:~$ sudo mount -ro,noload /dev/nbd0p5 /mnt
 ```
 6. Once mounted at /mnt directory it's necessary pack and compress this directory in a tar.gz file. For that, you can use the tar program.
 ```console
