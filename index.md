@@ -79,7 +79,6 @@ In this case, the lvs command find out 5 logical partitions
 foo@bar:~$ sudo mount -ro /dev/csic04-vg/root
 ```
 or
-
 ```console
 foo@bar:~$ sudo mount -ro /dev/mapper/csic-vg--root
 ```
