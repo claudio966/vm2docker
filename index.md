@@ -26,7 +26,7 @@ foo@bar:~$ sudo ls /dev/nbd*
 /dev/nbd0p3  /dev/nbd12  /dev/nbd2   /dev/nbd6
 ```
 
-4. After that, it's necessary connect the .vmdk image in a nbd virutal device:
+4. After that, it's necessary connect the .vmdk image in a nbd virtual device:
 ```console
 foo@bar:~$ sudo qemu-nbd -c /dev/nbd0 -r image.vmdk
 ```
@@ -74,7 +74,7 @@ foo@bar:~$ sudo lvs
 ```
 In this case, the lvs command find out 5 logical partitions
 
-3. If is necessary to mount the root partition. For this, you can do with two ways:
+3. It's necessary to mount the root partition. For this, you can do with two ways:
 ```console
 foo@bar:~$ sudo mount -ro /dev/csic04-vg/root
 ```
@@ -82,3 +82,4 @@ or
 ```console
 foo@bar:~$ sudo mount -ro /dev/mapper/csic-vg--root
 ```
+- Once mounted, you can continue the process from sixth step until end.
